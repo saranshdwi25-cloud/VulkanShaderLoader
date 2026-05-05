@@ -1,0 +1,54 @@
+plugins {
+    id 'fabric-loom' version '1.7-SNAPSHOT'
+    id 'maven-publish'
+}
+
+version   = '1.0.0'
+group     = 'net.shadervulkan'
+archivesBaseName = 'VulkanShaderLoader'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://maven.fabricmc.net/' }
+}
+
+dependencies {
+    minecraft         'com.mojang:minecraft:1.21.11'
+    mappings          "net.fabricmc:yarn:1.21.11+build.1:v2"
+    modImplementation 'net.fabricmc:fabric-loader:0.16.5'
+
+    // Fabric API (for lifecycle events)
+    modImplementation "net.fabricmc.fabric-api:fabric-api:0.109.0+1.21.11"
+
+    // VulkanMod — provided at runtime, referenced for mixin targets
+    // Download manually from Modrinth and place in run/mods/ for dev testing.
+    // modCompileOnly files("libs/VulkanMod_1_21_11-0_6_5.jar")
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filteringCharset 'UTF-8'
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+    withSourcesJar()
+}
+
+jar {
+    from('LICENSE')
+}
+
+// Copy shader packs to the run directory for testing
+task copyShaderpacks(type: Copy) {
+    from 'shaderpacks'
+    into 'run/shaderpacks'
+}
+
+tasks.named('runClient').configure {
+    dependsOn copyShaderpacks
+}

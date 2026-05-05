@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "vulkan_shader_loader",
+  "version": "1.0.0",
+  "name": "VulkanShaderLoader",
+  "description": "Iris-style shader pack loader for VulkanMod — Vulkan-native PBR shaders for Minecraft.",
+  "authors": ["VulkanShaderLoader Contributors"],
+  "contact": {
+    "sources": "https://github.com/your-repo/VulkanShaderLoader"
+  },
+  "license": "LGPL-3.0-only",
+  "icon": "assets/vulkan_shader_loader/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "net.shadervulkan.VulkanShaderLoaderMod"
+    ]
+  },
+  "mixins": [
+    "shadervulkan.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.14",
+    "minecraft": "1.21.11",
+    "vulkanmod": ">=0.6.5"
+  }
+}

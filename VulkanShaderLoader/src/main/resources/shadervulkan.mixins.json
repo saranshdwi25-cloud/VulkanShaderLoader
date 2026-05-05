@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "net.shadervulkan.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ShaderLoadUtilMixin",
+    "VOptionScreenMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

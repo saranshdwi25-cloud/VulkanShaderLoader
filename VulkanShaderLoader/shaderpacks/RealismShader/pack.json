@@ -1,0 +1,11 @@
+{
+  "name": "RealismShader",
+  "author": "VulkanShaderLoader Template",
+  "version": "1.0.0",
+  "description": "Physically-based lighting with GGX specular, atmospheric scattering, and ACES tone mapping.",
+  "preview_image": "preview.png",
+  "min_vulkanmod": "0.6.5",
+  "has_water_shader": false,
+  "has_cloud_shader": false,
+  "uses_pack_ubo": false
+}
